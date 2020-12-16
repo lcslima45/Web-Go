@@ -20,13 +20,20 @@ func init() {
 
 func main() {
 	templates, err := ioutil.ReadDir("templates/")
-	stored := []interface{}{prophets, values, prophetsMap, prophetsMap, enterpriseGo}
 	if err != nil {
 		log.Fatalln("Error reading file", err)
 	}
 	for index, temp := range templates {
-		function := stored[index]
-		err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), function.(func())
+		if index == 0 {
+			err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), prophets())
+		} else if index == 1 {
+
+			err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), values())
+		} else if index == 2 {
+			err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), prophetsMap())
+		} else {
+			err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), enterpriseGo())
+		}
 		if err != nil {
 			log.Println("Error executing", err)
 		}
