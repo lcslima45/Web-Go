@@ -1,0 +1,11 @@
+<meta charset="UTF-8">
+<Title> Names </title>
+</head> 
+<body>
+<ul>
+    {{range $id, $value := .}}
+    <li> <h3> Result: {{$id}} - {{$value}} </h3> </li> 
+    {{end}}
+</ul>
+</body>
+</html>
