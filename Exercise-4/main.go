@@ -23,27 +23,16 @@ func main() {
 	if err != nil {
 		log.Fatalln("Error reading file", err)
 	}
-	store := []func() interface{}{
-		prophets,
-		values,
-		prophetsMap,
-		enterpriseGo,
-	}
 	for index, temp := range templates {
-		function := store[index]
-		err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), function())
-
-		/*
-			if index == 0 {
-				err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), prophets())
-			} else if index == 1 {
-
-				err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), values())
-			} else if index == 2 {
-				err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), prophetsMap())
-			} else {
-				err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), enterpriseGo())
-			}*/
+		if index == 0 {
+			err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), prophets())
+		} else if index == 1 {
+			err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), values())
+		} else if index == 2 {
+			err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), prophetsMap())
+		} else {
+			err = tpl.ExecuteTemplate(os.Stdout, temp.Name(), enterpriseGo())
+		}
 		if err != nil {
 			log.Println("Error executing", err)
 		}
