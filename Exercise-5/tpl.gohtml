@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <meta charset="UTF-8"> 
+    <title>functions</title>
+</head> 
+<body> 
+    {{range .Wisdom}}
+        {{uc .Name}}
+    {{end}}
+
+    {{range .Transport}}
+        {{ft .Model}}
+        {{uc .Manufacturer}}
+    {{end}}
+
+    <b> Time without formatting: {{.Time}} </b> 
+    <b> Time with formatting: {{dateFormating .Time}} </b
+</body>
+</html>    
