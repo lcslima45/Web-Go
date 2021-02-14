@@ -24,15 +24,15 @@ func index(w http.ResponseWriter, req *http.Request) {
 	c := getCookie(w, req)
 	c = appendValue(w, c)
 	xs := strings.Split(c.Value, "|")
-	tpl.ExecuteTemplate(w, "index.gohtml", xs)
+	tpl.ExecuteTemplate(w, "index.html", xs)
 }
 
 func getCookie(w http.ResponseWriter, req *http.Request) *http.Cookie {
-	c, err := req.Cookie("session")
+	c, err := req.Cookie("suxexo")
 	if err != nil {
 		sID, _ := uuid.NewV4()
 		c = &http.Cookie{
-			Name:  "session",
+			Name:  "suxexo",
 			Value: sID.String(),
 		}
 		http.SetCookie(w, c)
